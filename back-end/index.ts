@@ -18,6 +18,20 @@ app.get('/api/v1/properties-types', (req, res) => {
   res.json(filteredPropertiesTypes);
 });
 
+app.get('/api/v1/districts', (req, res) => {
+  const districts = PROPERTIES.map((property) => property.address.district);
+  const filteredDistricts = [...new Set(districts)];
+
+  res.json(filteredDistricts);
+});
+
+app.get('/api/v1/locations', (req, res) => {
+  const locations = PROPERTIES.map((property) => property.address.city);
+  const filteredLocations = [...new Set(locations)];
+
+  res.json(filteredLocations);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
