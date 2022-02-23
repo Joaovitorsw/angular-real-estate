@@ -18,6 +18,8 @@
     },
     "outDir": "./dist/out-tsc",
     "strictPropertyInitialization": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
