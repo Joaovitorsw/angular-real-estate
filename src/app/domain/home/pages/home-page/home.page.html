@@ -15,7 +15,9 @@
       <mat-form-field appearance="outline">
         <mat-label>Property Type </mat-label>
         <mat-select>
-          <mat-option [value]="type" *ngFor="let type of propertiesTypes"
+          <mat-option
+            [value]="type"
+            *ngFor="let type of propertiesTypes$ | async"
             >{{type | titlecase}}</mat-option
           >
         </mat-select>
@@ -24,8 +26,11 @@
       <mat-form-field appearance="outline">
         <mat-label>District </mat-label>
         <mat-select>
-          <mat-option [value]="district" *ngFor="let district of DISTRICTS"
-            >{{district | titlecase}}</mat-option
+          <mat-option
+            [value]="district"
+            *ngFor="let district of districts$ | async"
+          >
+            {{district | titlecase}}</mat-option
           >
         </mat-select>
       </mat-form-field>
@@ -41,7 +46,10 @@
         />
 
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-          <mat-option *ngFor="let option of LOCATIONS " [value]="option">
+          <mat-option
+            *ngFor="let option of locations$ | async "
+            [value]="option"
+          >
             <mat-icon matSuffix>location_on</mat-icon>
             {{option}}
           </mat-option>

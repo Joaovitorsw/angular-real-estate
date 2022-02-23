@@ -7,8 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { HomePage } from './home-page/home.page';
-import { HomeDomainRoutingModule } from './home.domain-routing.module';
+import { HomeDomainRoutingModule } from './home-routing.module';
+import { HomePage } from './pages/home-page/home.page';
 
 @NgModule({
   declarations: [HomePage],
