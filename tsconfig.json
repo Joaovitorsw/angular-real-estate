@@ -2,7 +2,20 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
+    "paths": {
+      "@real-estate/components": ["app/components"],
+      "@real-estate/validators": ["app/validators"],
+      "@real-estate/database": ["app/database"],
+      "@real-estate/shared": ["app/shared"],
+      "@real-estate/directives": ["app/directives"],
+      "@real-estate/mocks": ["app/mocks"],
+      "@real-estate/models": ["app/models"],
+      "@real-estate/pages": ["app/pages"],
+      "@real-estate/pipes": ["app/pipes"],
+      "@real-estate/services": ["app/services"],
+      "@real-estate/domain": ["app/domain"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -18,10 +31,7 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ]
+    "lib": ["es2020", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
