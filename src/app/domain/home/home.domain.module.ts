@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,7 +21,6 @@ import { HomeDomainRoutingModule } from './home.domain-routing.module';
     MatInputModule,
     MatAutocompleteModule,
     MatButtonModule,
-    HttpClientModule,
     MatIconModule,
   ],
 })
