@@ -1,12 +1,48 @@
 @import "colors";
-header {
-  background-color: $header-color;
-  padding: 20px;
-  .image-logo {
-    height: 60px;
-  }
-}
+@import "mixins";
+@import "variables";
 
 :host {
   display: block;
+
+  section {
+    @include flex-center(column);
+    margin-top: 50px;
+    text-align: center;
+
+    .title {
+      font-size: 22px;
+      font-weight: $bold;
+      margin-bottom: 5px;
+    }
+
+    .sub-title {
+      font-size: 18px;
+      color: $sub-title-color;
+    }
+  }
+
+  .mat-button-toggle {
+    min-width: 120px;
+  }
+
+  .search-container {
+    border-radius: 5px;
+    margin-top: 50px;
+    padding: $padding;
+    position: relative;
+    border: 2px solid $primary-color;
+    display: flex;
+    flex-direction: column;
+
+    mat-button-toggle-group {
+      margin-bottom: 20px;
+    }
+  }
+
+  mat-option {
+    mat-icon {
+      color: $primary-color;
+    }
+  }
 }

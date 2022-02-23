@@ -1,3 +1,54 @@
-<header>
-  <img class="image-logo" src="assets/images/project-logo.png" alt="logo" />
-</header>
+<main>
+  <section>
+    <h1 class="title">
+      Buy or rent your property with the real estate specialists in your region
+    </h1>
+    <h2 class="sub-title">
+      Find the best apartments, houses and commercial real estate
+    </h2>
+    <div class="search-container">
+      <mat-button-toggle-group>
+        <mat-button-toggle value="sale">Buy</mat-button-toggle>
+        <mat-button-toggle value="rent">To Rent</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Property Type </mat-label>
+        <mat-select>
+          <mat-option [value]="type" *ngFor="let type of propertiesTypes"
+            >{{type | titlecase}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>District </mat-label>
+        <mat-select>
+          <mat-option [value]="district" *ngFor="let district of DISTRICTS"
+            >{{district | titlecase}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+
+        <input
+          matInput
+          type="text"
+          [matAutocomplete]="auto"
+          placeholder="Enter a street, neighborhood or city"
+        />
+
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of LOCATIONS " [value]="option">
+            <mat-icon matSuffix>location_on</mat-icon>
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary">Search real estate</button>
+    </div>
+  </section>
+</main>
