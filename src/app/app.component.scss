@@ -1,0 +1,15 @@
+@import "colors";
+@import "variables";
+@import "mixins";
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $header-color;
+  padding: $padding;
+
+  .image-logo {
+    height: 60px;
+    cursor: pointer;
+  }
+}

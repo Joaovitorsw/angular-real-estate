@@ -1,1 +1,15 @@
+<header>
+  <img
+    class="image-logo"
+    src="assets/images/project-logo.png"
+    alt="logo"
+    [routerLink]="'/'"
+  />
+  <div>
+    <button mat-button>Buy</button>
+    <button mat-button>To Rent</button>
+    <button mat-button [routerLink]="'/sell'">Sell</button>
+  </div>
+</header>
+
 <router-outlet></router-outlet>
