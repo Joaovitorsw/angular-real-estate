@@ -1,0 +1,12 @@
+@import "colors";
+header {
+  background-color: $header-color;
+  padding: 20px;
+  .image-logo {
+    height: 60px;
+  }
+}
+
+:host {
+  display: block;
+}
