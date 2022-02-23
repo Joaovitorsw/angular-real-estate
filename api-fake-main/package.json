@@ -1,0 +1,22 @@
+{
+  "name": "api-fake",
+  "version": "1.0.0",
+  "description": "Api fake para testes candidatos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusbrunsker/api-fake.git"
+  },
+  "author": "Matheus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusbrunsker/api-fake/issues"
+  },
+  "homepage": "https://github.com/matheusbrunsker/api-fake#readme",
+  "devDependencies": {
+    "json-server": "^0.17.0"
+  }
+}
