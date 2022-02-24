@@ -13,16 +13,16 @@ const routes: Routes = [
       (await import('./domain/sell/sell.domain.module')).SellDomainModule,
   },
   {
-    path: 'buy',
+    path: 'sale',
     loadChildren: async () =>
-      (await import('./domain/view-property/view-property.domain.module'))
-        .ViewPropertyDomainModule,
+      (await import('./domain/view-properties/view-properties.domain.module'))
+        .ViewPropertiesDomainModule,
   },
   {
     path: 'rent',
     loadChildren: async () =>
-      (await import('./domain/view-property/view-property.domain.module'))
-        .ViewPropertyDomainModule,
+      (await import('./domain/view-properties/view-properties.domain.module'))
+        .ViewPropertiesDomainModule,
   },
 ];
 

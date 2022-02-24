@@ -2,6 +2,7 @@
 @import "variables";
 @import "mixins";
 header {
+  padding-top: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,4 +13,6 @@ header {
     height: 60px;
     cursor: pointer;
   }
+
+  color: white;
 }
