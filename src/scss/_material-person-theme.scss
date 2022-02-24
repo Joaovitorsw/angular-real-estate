@@ -252,7 +252,8 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 }
 
 .mat-button-toggle {
-  background-color: #cc0000;
+  background-color: #760303;
+
   color: #ffffff;
 }
 
@@ -260,11 +261,17 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
   background-color: #ff0000;
 }
 
+mat-icon {
+  color: #cc0000;
+}
+
 .mat-button-toggle-checked {
-  background-color: #760303;
+  background-color: #cc0000;
+
   color: #ffb3b3 !important;
 }
-.mat-autocomplete-panel.mat-autocomplete-visible {
+.mat-autocomplete-panel.mat-autocomplete-visible,
+.mat-select-panel:not([class*="mat-elevation-z"]) {
   &::-webkit-scrollbar {
     height: 12px;
     width: 12px;
