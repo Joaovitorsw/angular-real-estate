@@ -1,1 +1,152 @@
-<p>sell works!</p>
+<h1>Register you Immobile</h1>
+
+<form [formGroup]="formGroup">
+  <mat-form-field appearance="outline" data-testid="mat-input-name">
+    <mat-label>Name</mat-label>
+    <input formControlName="name" matInput type="text" />
+    <mat-error
+      data-testid="mat-input-name-error"
+      reShowValidationError
+      [reShowValidationErrorControlName]="'name'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" data-testid="mat-select-type">
+    <mat-label>Type</mat-label>
+    <mat-select formControlName="type">
+      <mat-option [value]="option" *ngFor="let option of typesOptions"
+        >{{option}}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'type'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Zip Code</mat-label>
+    <input
+      formControlName="zipCode"
+      matInput
+      type="text"
+      data-testid="mat-input-zip-code"
+    />
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'zipCode'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Kind Type</mat-label>
+    <mat-select formControlName="kindType" data-testid="mat-select-kind-type">
+      <mat-option value="rent"> Rent </mat-option>
+      <mat-option value="sale"> Sale </mat-option>
+    </mat-select>
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'kindType'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Value</mat-label>
+    <input
+      formControlName="value"
+      matInput
+      type="number"
+      data-testid="mat-input-value"
+    />
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'value'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Condominium</mat-label>
+    <input
+      formControlName="condominium"
+      matInput
+      type="number"
+      data-testid="mat-input-condominium"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Bedrooms</mat-label>
+    <input
+      formControlName="bedRooms"
+      matInput
+      type="number"
+      data-testid="mat-input-bed-rooms"
+    />
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'bedRooms'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Bathrooms</mat-label>
+    <input
+      formControlName="bathRooms"
+      matInput
+      type="number"
+      data-testid="mat-input-bath-rooms"
+    />
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'bathRooms'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Furnished</mat-label>
+    <mat-select formControlName="furnished" data-testid="mat-select-furnished">
+      <mat-option value="yes"> Yes </mat-option>
+      <mat-option value="no"> No </mat-option>
+    </mat-select>
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'furnished'"
+    ></mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Area</mat-label>
+    <input
+      formControlName="area"
+      matInput
+      type="number"
+      data-testid="mat-input-area"
+    />
+    <mat-error
+      reShowValidationError
+      [reShowValidationErrorControlName]="'area'"
+    ></mat-error>
+  </mat-form-field>
+
+  <div class="file-upload">
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      #fileUpload
+      data-testid="input-file"
+    />
+    {{fileName || "No file uploaded yet."}}
+    <button mat-mini-fab (click)="fileUpload.click()">
+      <mat-icon>attach_file</mat-icon>
+    </button>
+  </div>
+  <button
+    [disabled]="formGroup.invalid"
+    mat-raised-button
+    data-testid="mat-button-submit"
+    color="primary"
+    (click)="submitForm()"
+  >
+    Submit
+  </button>
+</form>
