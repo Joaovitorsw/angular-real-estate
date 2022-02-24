@@ -6,6 +6,7 @@
   display: block;
 
   section {
+    padding: $padding;
     @include flex-center(column);
     margin-top: 50px;
     text-align: center;
@@ -28,7 +29,9 @@
 
   .search-container {
     border-radius: 5px;
+
     margin-top: 50px;
+    margin-bottom: 30px;
     padding: $padding;
     position: relative;
     border: 2px solid $primary-color;
@@ -38,11 +41,10 @@
     mat-button-toggle-group {
       margin-bottom: 20px;
     }
-  }
 
-  mat-option {
-    mat-icon {
-      color: $primary-color;
+    mat-error {
+      position: relative;
+      top: -10px;
     }
   }
 }

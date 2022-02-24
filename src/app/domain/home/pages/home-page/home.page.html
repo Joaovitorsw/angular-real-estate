@@ -6,31 +6,51 @@
     <h2 class="sub-title">
       Find the best apartments, houses and commercial real estate
     </h2>
-    <div class="search-container">
-      <mat-button-toggle-group>
-        <mat-button-toggle value="sale">Buy</mat-button-toggle>
-        <mat-button-toggle value="rent">To Rent</mat-button-toggle>
+    <form class="search-container" [formGroup]="searchGroup">
+      <mat-button-toggle-group formControlName="type">
+        <mat-button-toggle data-testid="mat-button-toggle-sale" value="sale"
+          >Buy</mat-button-toggle
+        >
+        <mat-button-toggle data-testid="mat-button-toggle-rent" value="rent"
+          >To Rent</mat-button-toggle
+        >
       </mat-button-toggle-group>
+
+      <mat-error
+        data-testid="mat-button-toggle-group-error"
+        reShowValidationError
+        [reShowValidationErrorControlName]="'type'"
+      ></mat-error>
 
       <mat-form-field appearance="outline">
         <mat-label>Property Type </mat-label>
-        <mat-select>
+        <mat-select
+          formControlName="propertyType"
+          data-testid="mat-select-property-type"
+        >
+          <mat-option value="null">--</mat-option>
+
           <mat-option
-            [value]="type"
-            *ngFor="let type of propertiesTypes$ | async"
-            >{{type | titlecase}}</mat-option
+            [value]="option"
+            *ngFor="let option of propertiesTypesOptions$ | async"
+            >{{option | titlecase}}</mat-option
           >
         </mat-select>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>District </mat-label>
-        <mat-select>
+        <mat-select
+          formControlName="district"
+          data-testid="mat-select-district"
+        >
+          <mat-option value="null">--</mat-option>
+
           <mat-option
-            [value]="district"
-            *ngFor="let district of districts$ | async"
+            [value]="option"
+            *ngFor="let option of districtsOptions$ | async"
           >
-            {{district | titlecase}}</mat-option
+            {{option | titlecase}}</mat-option
           >
         </mat-select>
       </mat-form-field>
@@ -41,13 +61,19 @@
         <input
           matInput
           type="text"
+          data-testid="mat-input-location"
+          formControlName="location"
           [matAutocomplete]="auto"
           placeholder="Enter a street, neighborhood or city"
         />
 
-        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-autocomplete
+          autoActiveFirstOption
+          #auto="matAutocomplete"
+          data-testid="mat-input-location-auto-complete"
+        >
           <mat-option
-            *ngFor="let option of locations$ | async "
+            *ngFor="let option of locationOptions$ | async "
             [value]="option"
           >
             <mat-icon matSuffix>location_on</mat-icon>
@@ -56,7 +82,15 @@
         </mat-autocomplete>
       </mat-form-field>
 
-      <button mat-raised-button color="primary">Search real estate</button>
-    </div>
+      <button
+        data-testid="mat-button-submit"
+        mat-raised-button
+        [disabled]="searchGroup.invalid"
+        color="primary"
+        (click)="submitForm()"
+      >
+        Search real estate
+      </button>
+    </form>
   </section>
 </main>
