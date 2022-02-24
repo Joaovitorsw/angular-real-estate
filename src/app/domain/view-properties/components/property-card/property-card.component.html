@@ -1,0 +1,48 @@
+<div class="property-image">
+  <img [src]="property.image" data-testid="property-image" />
+</div>
+<div class="property-info">
+  <h1 data-testid="property-name">{{ property.name }}</h1>
+  <h2 data-testid="property-address">
+    <mat-icon matSuffix>location_on</mat-icon> {{ property.address.street }}
+    {{ property.address.number }} - {{ property.address.district }},
+    {{ property.address.city }}
+  </h2>
+  <p data-testid="property-area">
+    <mat-icon>crop_din</mat-icon>{{ property.area }} m² of area
+  </p>
+  <p data-testid="property-bedrooms">
+    <mat-icon>single_bed</mat-icon>{{ property.bedrooms }}
+    {{ property.bedrooms > 1 ? "bedrooms" : "bedroom" }}
+  </p>
+  <p data-testid="property-bathrooms">
+    <mat-icon>bathroom</mat-icon> {{ property.bathrooms }}
+    {{ property.bedrooms > 1 ? "bathrooms" : "bathroom" }}
+  </p>
+  <p data-testid="property-value">
+    <mat-icon>attach_money</mat-icon>
+    {{ property.value | currency: "USD":true }}
+  </p>
+  <p data-testid="property-announced">
+    <mat-icon>announcement</mat-icon>Announced By : {{ property.owner.name }}
+  </p>
+  <p data-testid="property-date">
+    <mat-icon>today</mat-icon>Date Announcement :
+    {{ property.dateAnnouncement | date }}
+  </p>
+  <p *ngIf="property.rent" data-testid="property-condominium">
+    <mat-icon>payments</mat-icon> Condominium : {{ property.condominium }}
+  </p>
+  <p data-testid="property-furnished">
+    <mat-icon>living</mat-icon> Furnished :
+    {{ property.furnished ? "Yes" : "No" }}
+  </p>
+  <div>
+    <button mat-raised-button color="primary" (click)="action.emit()">
+      {{ property.sale ? "Purchase" : "To Rent" }}
+    </button>
+    <button mat-raised-button color="accent" (click)="openDialog()">
+      See details
+    </button>
+  </div>
+</div>

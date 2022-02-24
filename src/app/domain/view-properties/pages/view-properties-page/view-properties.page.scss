@@ -1,0 +1,80 @@
+@import "mixins";
+@import "variables";
+
+:host {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: minmax(150px, 280px) minmax(200px, 1fr);
+  grid-auto-rows: auto;
+
+  .filters {
+    margin-top: 60px;
+    margin-left: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: $border-radius-card;
+    width: 100%;
+    min-width: 280px;
+    max-height: 800px;
+
+    & > :first-child {
+      margin-top: 20px;
+    }
+  }
+  .properties {
+    margin-top: 30px;
+    padding: $padding;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      text-align: center;
+      font-weight: $bold;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    re-property-card {
+      min-width: 250px;
+      margin: 10px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.mat-drawer {
+  position: fixed;
+}
+.mat-drawer-inner-container {
+  &::-webkit-scrollbar {
+    height: 4px !important;
+    width: 4px !important;
+  }
+}
+
+.mat-button-toggle {
+  min-width: 120px;
+}
+
+button {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  margin: 5px;
+  align-self: start;
+}
+
+@media screen and (max-width: 900px) {
+  :host {
+    display: block;
+
+    .filters {
+      margin: 0;
+      height: 100%;
+      min-width: 280px;
+      max-height: unset;
+    }
+  }
+}

@@ -1,0 +1,146 @@
+<mat-drawer-container autosize *reMediaIf="900; mode 'lt'">
+  <mat-drawer #drawer mode="push">
+    <ng-container *ngTemplateOutlet="filters"></ng-container>
+  </mat-drawer>
+  <button mat-raised-button color="warn" (click)="drawer.toggle()">
+    <mat-icon>filter_alt</mat-icon>
+  </button>
+</mat-drawer-container>
+
+<ng-container *reMediaIf="900; mode 'gt'">
+  <ng-container *ngTemplateOutlet="filters"></ng-container>
+</ng-container>
+
+<section class="properties" *ngIf="properties$ | async as properties">
+  <h1>
+    {{properties.length}} available {{ properties.length > 1 ? 'properties' :
+    'property'}} for {{kindService}} in Real Estates
+  </h1>
+  <re-property-card
+    [property]="property"
+    (buy)="updateProperty(property)"
+    *ngFor="let property of properties"
+  ></re-property-card>
+</section>
+
+<ng-template #filters>
+  <section>
+    <form class="filters" [formGroup]="filtersGroup">
+      <mat-form-field appearance="outline">
+        <mat-label>Property Type </mat-label>
+        <mat-select
+          formControlName="propertyType"
+          data-testid="mat-select-property-type"
+        >
+          <mat-option>--</mat-option>
+          <mat-option
+            [value]="type"
+            *ngFor="let type of propertiesTypes$ | async"
+            >{{type | titlecase}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input
+          matInput
+          type="text"
+          data-testid="mat-input-location"
+          formControlName="location"
+          [matAutocomplete]="auto"
+          placeholder="Enter a street, neighborhood or city"
+        />
+
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option
+            *ngFor="let option of locationOptions$ | async "
+            [value]="option"
+          >
+            <mat-icon matSuffix>location_on</mat-icon>
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Minimum price </mat-label>
+        <mat-select
+          formControlName="minPrice"
+          data-testid="mat-select-min-price"
+        >
+          <mat-option>--</mat-option>
+
+          <mat-option [value]="option" *ngFor="let option of minPrices$ | async"
+            >{{ option }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Max price </mat-label>
+        <mat-select
+          formControlName="maxPrice"
+          data-testid="mat-select-max-price"
+        >
+          <mat-option>--</mat-option>
+
+          <mat-option
+            [value]="option"
+            *ngFor="let option of maxPrices$  | async"
+            >{{ option }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Bedrooms </mat-label>
+        <mat-select
+          formControlName="bedrooms"
+          data-testid="mat-select-bedrooms"
+        >
+          <mat-option>--</mat-option>
+
+          <mat-option
+            [value]="option"
+            *ngFor="let option of bedroomsOptions$ | async"
+            >{{option}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Bathrooms </mat-label>
+        <mat-select
+          formControlName="bathrooms"
+          data-testid="mat-select-bathrooms"
+        >
+          <mat-option>--</mat-option>
+
+          <mat-option
+            [value]="option"
+            *ngFor="let option of bathroomsOptions$ | async"
+            >{{option}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Minimum area </mat-label>
+        <mat-select formControlName="minArea" data-testid="mat-select-min-area">
+          <mat-option>--</mat-option>
+
+          <mat-option [value]="option" *ngFor="let option of minArea$ | async"
+            >{{option}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Maximum area </mat-label>
+        <mat-select formControlName="maxArea" data-testid="mat-select-max-area">
+          <mat-option>--</mat-option>
+
+          <mat-option [value]="option" *ngFor="let option of maxArea$ | async"
+            >{{option}}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </section>
+</ng-template>

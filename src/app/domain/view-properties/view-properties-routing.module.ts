@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewPropertyPage } from './pages/view-property-page/view-property.page';
+import { ViewPropertiesPage } from './pages/view-properties-page/view-properties.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ViewPropertyPage,
+    component: ViewPropertiesPage,
   },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ViewPropertyDomainRoutingModule {}
+export class ViewPropertiesDomainRoutingModule {}
